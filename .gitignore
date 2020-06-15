@@ -1,5 +1,6 @@
 # Dependency directory
 node_modules
+/fronted
 
 # Debug log from npm
 npm-debug.log
@@ -8,4 +9,4 @@ npm-debug.log
 .env
 
 nodemon.json
-fronted
+
