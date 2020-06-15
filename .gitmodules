@@ -1,0 +1,3 @@
+[submodule "fronted"]
+	path = fronted
+	url = https://github.com/stortosa/goals-app.git
