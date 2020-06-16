@@ -13,6 +13,7 @@ function EditGoal(props) {
   const colorGoalRef = useRef('');
   const textGoalRef = useRef('');
   const stepGoalRef = useRef('');
+  // const idGoal = oneGoal._id;
 
   const [error, saveError] = useState(false);
 
@@ -22,6 +23,7 @@ function EditGoal(props) {
           newColor = colorGoalRef.current.value,
           newText = textGoalRef.current.value,
           newStep = stepGoalRef.current.value;
+          // newId = oneGoal_id;
 
     if(newName === '' || newColor === '' || newText === '' || newStep === ''){
       saveError(true);
@@ -36,12 +38,13 @@ function EditGoal(props) {
       name: newName,
       color: newColor,
       goalText: newText,
-      step1: newStep
+      step1: newStep,
+      _id: oneGoal._id
     }
     console.log(editingGoal);
 
     // send request
-    const url = `http://localhost:4000/goals/edit/${oneGoal._id}`;  /// goals/edit/ id     4000
+    const url = `http://localhost:4000/goals/${oneGoal._id}`;  /// goals/edit/ id     4000
 
     try {
       const result = await axios.put(url, editingGoal);

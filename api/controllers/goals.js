@@ -64,7 +64,7 @@ exports.goals_create_goal = (req, res, next) => {
             url: 'http://localhost:4000/goals/' + result._id
           }
         }
-      }); 
+      });
     })
     .catch(err => {
       console.log(err);
@@ -102,19 +102,23 @@ exports.goals_get_goal = (req, res, next) => {
 }
 
 exports.goals_update_goal = (req, res, next) => {
-  const id = req.params.goalId;
+  // const id = req.params.goalId;
+  // console.log(id);
   const updateOps = {};
   for (const ops of req.body) {
     updateOps[ops.propName] = ops.value;
   }     //  name: req.body.newName, date: req.body.newDate, goalText: req.body.newGoalText, step1: req.body.newStep1
-  Goal.update({ _id: id }, { $set: updateOps })
+  Goal.findByIdAndUpdate({ _id: goal._id }, { $set: updateOps }, { new: true })
+  // Goal.findByIdAndUpdate(req.params.goalId, req.body)
     .exec()
     .then(result => {
+      console.log(result);
       res.status(200).json({
         message: 'Goals update',
+        _id: result._id, //req.params.goalId,
         request: {
           type: 'GET',
-          url: 'http://localhost:4000/goals/' + id
+          url: 'http://localhost:4000/goals/' + result._id
         }
       });
     })

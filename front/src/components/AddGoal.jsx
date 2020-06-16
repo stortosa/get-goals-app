@@ -33,14 +33,13 @@ function AddGoal({ history, saveReloadGoals }) {
         goalText: textGoal,
         step1: stepGoal,
 
-        // _id: idGoal     // no estoy serguro de esto o _id: idGoal
       });
       console.log(result);
       if (result.status === 201) {
         Swal.fire(
-          'Goal added',
+          'Good job!',
           'Goal was created successfuly',
-          'Success'
+          'success'
         )
       }
     } catch (error) {

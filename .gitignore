@@ -1,7 +1,7 @@
 # Dependency directory
 node_modules
 /fronted
-
+.gitmodules
 # Debug log from npm
 npm-debug.log
 

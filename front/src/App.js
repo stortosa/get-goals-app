@@ -55,7 +55,7 @@ function App() {
       <Switch>
         <Route exact path="/home" render={() => <Home />} />
         <Route exact path="/goals" render={() =>
-          <Goals goals={goals} extractId={extractId} />} />
+          <Goals goals={goals} saveReloadGoals={saveReloadGoals} />} />
         <Route exact path="/new-goal" render={() => <AddGoal saveReloadGoals={saveReloadGoals} />} />
         <Route exact path="/goals/:_id" render={() => <GoalDetails />} />
         <Route exact path="/goals/edit/:_id" render={(props) => {
