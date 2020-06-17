@@ -8,7 +8,6 @@ import { withRouter } from 'react-router-dom';
 function AddGoal({ history, saveReloadGoals }) {
 
   // states:
-  // tendría que ser solo un Objeto con los datos en único state ???
   const [nameGoal, saveName] = useState('');
   const [colorGoal, saveColor] = useState('');
   const [textGoal, saveText] = useState('');

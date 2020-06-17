@@ -19,7 +19,7 @@ router.post('/', GoalsController.goals_create_goal);
 
 router.get("/:goalId", GoalsController.goals_get_goal);
 
-router.patch('/:goalId', GoalsController.goals_update_goal);
+router.put('/:goalId', GoalsController.goals_update_goal);
 
 router.delete('/:goalId', GoalsController.goals_delete);
 

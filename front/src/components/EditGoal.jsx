@@ -8,7 +8,8 @@ import { withRouter } from 'react-router-dom';
 function EditGoal(props) {
   const { history, oneGoal, saveReloadGoals } = props;
 
-  console.log(oneGoal);
+  // console.log(oneGoal);
+
   const nameGoalRef = useRef('');
   const colorGoalRef = useRef('');
   const textGoalRef = useRef('');
@@ -16,16 +17,17 @@ function EditGoal(props) {
   // const idGoal = oneGoal._id;
 
   const [error, saveError] = useState(false);
+  const [stateEdit, saveStateEdit] = useState('');
 
-  const editGoal = async e => {
+  const editGoal = async (e) => {
 
     const newName = nameGoalRef.current.value,
-          newColor = colorGoalRef.current.value,
-          newText = textGoalRef.current.value,
-          newStep = stepGoalRef.current.value;
-          // newId = oneGoal_id;
+      newColor = colorGoalRef.current.value,
+      newText = textGoalRef.current.value,
+      newStep = stepGoalRef.current.value;
+    // newId = oneGoal_id;
 
-    if(newName === '' || newColor === '' || newText === '' || newStep === ''){
+    if (newName === '' || newColor === '' || newText === '' || newStep === '') {
       saveError(true);
       return;
     }
@@ -39,15 +41,17 @@ function EditGoal(props) {
       color: newColor,
       goalText: newText,
       step1: newStep,
-      _id: oneGoal._id
+      // _id: oneGoal._id
     }
     console.log(editingGoal);
 
-    // send request
+    // send request 
     const url = `http://localhost:4000/goals/${oneGoal._id}`;  /// goals/edit/ id     4000
 
     try {
-      const result = await axios.put(url, editingGoal);
+
+      const result = await axios.put(url, editingGoal)
+
       console.log(result);
       if (result.status === 200) {
         Swal.fire(
@@ -68,6 +72,7 @@ function EditGoal(props) {
     saveReloadGoals(true);
     history.push('/goals');
   }
+
   return (
     <div className="col-md-8 mx-auto">
       <h1 className="text-center">Edit a Goal</h1>
@@ -83,7 +88,7 @@ function EditGoal(props) {
             name="name"
             placeholder="Goal Name"
             ref={nameGoalRef}
-          // defaultValue={oneGoal.name}
+          // defaultValue={(oneGoal.name === nameGoalRef )}
           />
         </div>
 

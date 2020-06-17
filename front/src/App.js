@@ -8,13 +8,14 @@ import Goals from './components/Goals';
 import GoalDetails from './components/GoalDetails';
 import EditGoal from './components/EditGoal';
 import AddGoal from './components/AddGoal';
+import axios from 'axios';
 
 function App() {
   const date = new Date().getFullYear();
 
   const [goals, saveGoals] = useState([]);
   const [reloadGoals, saveReloadGoals] = useState(true);
-  const [extractId, saveExtractId] = useState([]);
+  // const [extractId, saveExtractId] = useState([]);
 
   const dataId = [];
 
@@ -22,30 +23,14 @@ function App() {
   useEffect(() => {
     if (reloadGoals) {
       const requestApi = async () => {
-        const result = await fetch('http://localhost:4000/goals')
-          .then(res => {
-            return res.json();
-          })
-          .then(data => {
-            // console.log(data.goal)
-            return data.goals
-          })
-        saveGoals(result);
-        // console.log(result);
+        const result = await axios.get('http://localhost:4000/goals')
+        // console.log(result.data.goals)
+        saveGoals(result.data.goals);
 
-        result.map(resul =>
-          extractId.push(resul._id),
-        )
-        // saveExtractId(extractId);
-        // console.log(extractId)
-        //destructuring:
-        // const { name, color, goalText, step1, _id } = result[0];
-        // console.log(_id)
       }
       requestApi();
       //change a false reload of goal: 
       saveReloadGoals(false);
-
     }
   }, [reloadGoals]);
 
@@ -59,10 +44,12 @@ function App() {
         <Route exact path="/new-goal" render={() => <AddGoal saveReloadGoals={saveReloadGoals} />} />
         <Route exact path="/goals/:_id" render={() => <GoalDetails />} />
         <Route exact path="/goals/edit/:_id" render={(props) => {
-          // console.log(typeof props.match.params._id);
+          // console.log(props.match.params);
+          // const idGoal = parseInt(props.match.params._id);
           const idGoal = (props.match.params._id);
-          const oneGoal = goals.filter(goal => goal._id === idGoal);
 
+
+          const oneGoal = goals.filter(goal => goal._id === idGoal);
           return (
             <EditGoal
               oneGoal={oneGoal[0]}
@@ -78,3 +65,30 @@ function App() {
 }
 
 export default App;
+
+// código antigüo:
+// useEffect(() => {
+//   if (reloadGoals) {
+//     const requestApi = async () => {
+//       const result = await fetch('http://localhost:4000/goals')
+//       console.log(result)
+//         .then(res => {
+//           return res.json();
+//         })
+//         .then(data => {
+//           // console.log(data.goal)
+//           return data.goals
+//         })
+//       saveGoals(result);
+//       // console.log(result);
+
+//       result.map(resul =>
+//         extractId.push(resul._id),
+//       )
+//     }
+//     requestApi();
+//     //change a false reload of goal: 
+//     saveReloadGoals(false);
+
+//   }
+// }, [reloadGoals]);

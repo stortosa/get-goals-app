@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import GoalDetails from './GoalDetails';
 
 function Goals({ goals, saveReloadGoals }) {
-  // console.log(goals)
+  console.log(goals)
   return (
     <Fragment>
       <h1 className="text-center">Goals</h1>

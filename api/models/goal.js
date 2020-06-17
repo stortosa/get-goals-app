@@ -6,6 +6,13 @@ const goalSchema = mongoose.Schema({
   color: { type: String, required: true },
   goalText: { type: String, required: true },
   step1: { type: String, required: true }
-});
+  },
+  {
+    timestamps: {
+      createdAt: 'created_at',
+      updatedAt: 'updated_at'
+    }
+  }
+);
 
 module.exports = mongoose.model('Goal', goalSchema);

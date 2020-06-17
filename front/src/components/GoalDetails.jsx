@@ -10,7 +10,7 @@ function GoalDetails({ goal, saveReloadGoals }) {
   const deleteGoal = (_id) => {
     console.log("Eliminando...", _id);
 
-    //TODO eliminar los registros
+    //TODO eliminar los registros 
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
