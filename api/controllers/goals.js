@@ -15,7 +15,7 @@ exports.goals_get_all = (req, res, next) => {
             color: doc.color,
             goalText: doc.goalText,
             step1: doc.step1,
-            _id: doc.id,
+            _id: doc._id,
             request: {
               type: 'GET',
               url: 'http://localhost:4000/goals/' + doc._id
@@ -103,40 +103,24 @@ exports.goals_get_goal = (req, res, next) => {
 
 exports.goals_update_goal = (req, res, next) => {
   const id = req.params.goalId;
-  // console.log(id);
-  const updateOps = {};
-  for (const ops of req.body) {
-    updateOps[ops.propName] = ops.value;
-  }     //  name: req.body.newName, date: req.body.newDate, goalText: req.body.newGoalText, step1: req.body.newStep1
-
-  Goal
-    .findByIdAndUpdate({ _id: id }, { $set: updateOps }, { new: true })
-    // Goal.findByIdAndUpdate(req.params.goalId, req.body)
-
-    .populate('oneGoal')
-    .exec()
-    .then(result => {
-      console.log(result);
-      res.status(200).json({
-        message: 'Goals update',
-        _id: req.params.goalId, //req.params.goalId,   // result._id
-        request: {
-          type: 'GET',
-          url: 'http://localhost:4000/goals/' + _id
-        }
-      });
+  Goal.findByIdAndUpdate(id, req.body, { new: true })
+    .populate('goal')
+    .then(x => {
+      console.log(x)
+      res.json({ "updated": true, id })
     })
     .catch(err => {
       console.log(err);
       res.status(500).json({
-        error: err
+        error: err,
       });
     });
+
 }
 
 exports.goals_delete = (req, res, next) => {
   const id = req.params.goalId;
-  Goal.remove({ _id: id })
+  Goal.deleteMany({ _id: id })
     .exec()
     .then(result => {
       res.status(200).json({

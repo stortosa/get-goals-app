@@ -8,34 +8,36 @@ import { withRouter } from 'react-router-dom';
 function EditGoal(props) {
   const { history, oneGoal, saveReloadGoals } = props;
 
-  // console.log(oneGoal);
+  console.log(oneGoal);
 
+  //generate Refs:
   const nameGoalRef = useRef('');
   const colorGoalRef = useRef('');
   const textGoalRef = useRef('');
   const stepGoalRef = useRef('');
-  // const idGoal = oneGoal._id;
 
   const [error, saveError] = useState(false);
   const [stateEdit, saveStateEdit] = useState('');
 
   const editGoal = async (e) => {
 
+    e.preventDefault();
+    //catch form´s values
+
+    // validation
     const newName = nameGoalRef.current.value,
       newColor = colorGoalRef.current.value,
       newText = textGoalRef.current.value,
       newStep = stepGoalRef.current.value;
-    // newId = oneGoal_id;
 
     if (newName === '' || newColor === '' || newText === '' || newStep === '') {
       saveError(true);
       return;
     }
+
     saveError(false);
 
-    e.preventDefault();
-    //catch form´s values
-
+    // Values from Form
     const editingGoal = {
       name: newName,
       color: newColor,
@@ -46,18 +48,18 @@ function EditGoal(props) {
     console.log(editingGoal);
 
     // send request 
-    const url = `http://localhost:4000/goals/${oneGoal._id}`;  /// goals/edit/ id     4000
+    const url = `http://localhost:4000/goals/${oneGoal._id}`;
 
     try {
 
-      const result = await axios.put(url, editingGoal)
+      const result = await axios.put(url, editingGoal);
 
       console.log(result);
       if (result.status === 200) {
         Swal.fire(
-          'Goal edited',
-          'Goal was edited successfuly',
-          'Success'
+          'Good job!',
+          'The was edited successfuly!',
+          'success'
         )
       }
     } catch{
@@ -88,7 +90,7 @@ function EditGoal(props) {
             name="name"
             placeholder="Goal Name"
             ref={nameGoalRef}
-          // defaultValue={(oneGoal.name === nameGoalRef )}
+          // defaultValue={}
           />
         </div>
 
@@ -100,7 +102,7 @@ function EditGoal(props) {
             name="color"
             placeholder="Color"
             ref={colorGoalRef}
-          // defaultValue={goal.colorGoal}
+          // defaultValue={oneGoal.color}
 
           />
         </div>
@@ -133,7 +135,6 @@ function EditGoal(props) {
           type="submit"
           className="font-weight-bold text-uppercase mt-5 btn btn-primary btn-block py-3"
           value="Edit a Goal"
-        // onClick={()=>{console.log(nameGoalRef.current.value, colorGoalRef.current.value, textGoalRef.current.value, stepGoalRef.current.value)}}
         />
       </form>
     </div>

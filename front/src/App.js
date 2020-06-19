@@ -45,9 +45,7 @@ function App() {
         <Route exact path="/goals/:_id" render={() => <GoalDetails />} />
         <Route exact path="/goals/edit/:_id" render={(props) => {
           // console.log(props.match.params);
-          // const idGoal = parseInt(props.match.params._id);
           const idGoal = (props.match.params._id);
-
 
           const oneGoal = goals.filter(goal => goal._id === idGoal);
           return (
@@ -61,34 +59,6 @@ function App() {
       <Footer date={date} />
     </Router>
   );
-
 }
 
 export default App;
-
-// código antigüo:
-// useEffect(() => {
-//   if (reloadGoals) {
-//     const requestApi = async () => {
-//       const result = await fetch('http://localhost:4000/goals')
-//       console.log(result)
-//         .then(res => {
-//           return res.json();
-//         })
-//         .then(data => {
-//           // console.log(data.goal)
-//           return data.goals
-//         })
-//       saveGoals(result);
-//       // console.log(result);
-
-//       result.map(resul =>
-//         extractId.push(resul._id),
-//       )
-//     }
-//     requestApi();
-//     //change a false reload of goal: 
-//     saveReloadGoals(false);
-
-//   }
-// }, [reloadGoals]);

@@ -25,7 +25,7 @@ function AddGoal({ history, saveReloadGoals }) {
 
     //create a new goal
     try {
-      const result = await axios.post('http://localhost:4000/goals', {    //  3000
+      const result = await axios.post('http://localhost:4000/goals', {
 
         name: nameGoal,
         color: colorGoal,
@@ -71,17 +71,6 @@ function AddGoal({ history, saveReloadGoals }) {
             onChange={e => saveName(e.target.value)}
           />
         </div>
-
-        {/* <div className="form-group">
-          <label>Goal Id</label>
-          <input
-            type="number"
-            className="form-control"
-            name="goalId"
-            placeholder="Goal Id"
-            onChange={e => saveId(e.target.value)}
-          />
-        </div> */}
 
         <div className="form-group">
           <label>Goal Color</label>

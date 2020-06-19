@@ -8,7 +8,8 @@ mongoose.connect(
     useMongoClient: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    useFindAndModify: false
   })
   .then(() => {
     console.log('Mongodb connected....')

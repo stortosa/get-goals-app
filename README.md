@@ -71,6 +71,7 @@ _Mention the tools you use to create the project_
 _Mencionar a todos aquellos que ayudaron en el proyecto desde sus inicios_
 
 * **Carlos** - *resolve conflicts* - [Carlos](https://github.com/carlostrujillosamper/)
+* **Javier** - *help with backend* - [Javier](https://github.com/javinovich)
 * **Nombre** - *Documentación* - [nombre](https://github.com/nombre)
 
 ## Expressions of Gratitude 🎁
