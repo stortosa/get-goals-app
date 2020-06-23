@@ -15,11 +15,9 @@ function App() {
 
   const [goals, saveGoals] = useState([]);
   const [reloadGoals, saveReloadGoals] = useState(true);
-  // const [extractId, saveExtractId] = useState([]);
 
   const dataId = [];
 
-  // TENDRIA QUE SER LA URL A USER/:ID UNA VEZ LOGEADO
   useEffect(() => {
     if (reloadGoals) {
       const requestApi = async () => {

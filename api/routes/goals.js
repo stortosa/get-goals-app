@@ -6,7 +6,6 @@ const GoalsController = require('../controllers/goals');
 
 router.get('/', GoalsController.goals_get_all);
 
-// router.post('/', checkAuth, GoalsController.goals_create_goal);
 router.post('/', GoalsController.goals_create_goal);
 
 router.get("/:goalId", GoalsController.goals_get_goal);

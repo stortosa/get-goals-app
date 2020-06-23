@@ -7,7 +7,6 @@ const cors = require('cors');
 require('./db');
 
 const goalRoutes = require('../api/routes/goals.js');
-const orderRoutes = require('../api/routes/orders.js');
 const userRoutes = require('../api/routes/users');
 
 const whiteList = ['http://localhost:3000','http://localhost']
@@ -42,7 +41,6 @@ app.use((req, res, next) => {
 
 // Routes which should handle requests
 app.use('/goals', goalRoutes);
-app.use('/orders', orderRoutes);
 app.use('/user', userRoutes);
 
 app.use((req, res, next) => {
