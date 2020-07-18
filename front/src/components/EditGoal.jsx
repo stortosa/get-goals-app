@@ -11,9 +11,9 @@ function EditGoal(props) {
   console.log(oneGoal);
 
   //generate Refs:
-  const nameGoalRef = useRef('');
+  const titleGoalRef = useRef('');
   const colorGoalRef = useRef('');
-  const textGoalRef = useRef('');
+  const descriptionGoalRef = useRef('');
   const stepGoalRef = useRef('');
 
   const [error, saveError] = useState(false);
@@ -25,12 +25,12 @@ function EditGoal(props) {
     //catch form´s values
 
     // validation
-    const newName = nameGoalRef.current.value,
+    const newTitle = titleGoalRef.current.value,
       newColor = colorGoalRef.current.value,
-      newText = textGoalRef.current.value,
+      newDescription = descriptionGoalRef.current.value,
       newStep = stepGoalRef.current.value;
 
-    if (newName === '' || newColor === '' || newText === '' || newStep === '') {
+    if (newTitle === '' || newColor === '' || newDescription === '' || newStep === '') {
       saveError(true);
       return;
     }
@@ -39,10 +39,10 @@ function EditGoal(props) {
 
     // Values from Form
     const editingGoal = {
-      name: newName,
+      title: newTitle,
       color: newColor,
-      goalText: newText,
-      step1: newStep,
+      description: newDescription,
+      step1: newStep,  // Steps
       // _id: oneGoal._id
     }
     console.log(editingGoal);
@@ -83,13 +83,13 @@ function EditGoal(props) {
 
       <form className="mt-5" onSubmit={editGoal}>
         <div className="form-group">
-          <label>Goal Name</label>
+          <label>Goal Title</label>
           <input
             type="text"
             className="form-control"
-            name="name"
-            placeholder="Goal Name"
-            ref={nameGoalRef}
+            name="title"
+            placeholder="Goal title"
+            ref={titleGoalRef}
           // defaultValue={}
           />
         </div>
@@ -112,9 +112,9 @@ function EditGoal(props) {
           <input
             type="text"
             className="form-control"
-            name="Text"
-            placeholder="Goal Text"
-            ref={textGoalRef}
+            name="description"
+            placeholder="Goal description"
+            ref={descriptionGoalRef}
           // defaultValue={goal.textGoal}
           />
         </div>

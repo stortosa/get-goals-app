@@ -12,7 +12,7 @@ mongoose.connect(
     useFindAndModify: false
   })
   .then(() => {
-    console.log('Mongodb connected....')
+    console.log('Mongodb connected...............')
   })
 
 mongoose.Promise = global.Promise;

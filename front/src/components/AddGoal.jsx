@@ -7,17 +7,17 @@ import { withRouter } from 'react-router-dom';
 
 function AddGoal({ history, saveReloadGoals }) {
 
-  // states:
-  const [nameGoal, saveName] = useState('');
+  // states: 
+  const [titleGoal, saveTitle] = useState('');
   const [colorGoal, saveColor] = useState('');
-  const [textGoal, saveText] = useState('');
+  const [descriptionGoal, saveDescription] = useState('');
   const [stepGoal, saveStep] = useState('');
   // const [idGoal, saveId] = useState('');
   const [error, saveError] = useState(false);
 
   const addGoal = async e => {
     e.preventDefault();
-    if (nameGoal === '' || colorGoal === '' || textGoal === '' || stepGoal === '') {
+    if (titleGoal === '' || colorGoal === '' || descriptionGoal === '' || stepGoal === '') {
       saveError(true);
       return;
     }
@@ -27,9 +27,9 @@ function AddGoal({ history, saveReloadGoals }) {
     try {
       const result = await axios.post('http://localhost:4000/goals', {
 
-        name: nameGoal,
+        name: titleGoal,
         color: colorGoal,
-        goalText: textGoal,
+        goalText: descriptionGoal,
         step1: stepGoal,
 
       });
@@ -66,9 +66,9 @@ function AddGoal({ history, saveReloadGoals }) {
           <input
             type="text"
             className="form-control"
-            name="name"
-            placeholder="Goal Name"
-            onChange={e => saveName(e.target.value)}
+            name="title"
+            placeholder="Goal title"
+            onChange={e => saveTitle(e.target.value)}
           />
         </div>
 
@@ -88,9 +88,9 @@ function AddGoal({ history, saveReloadGoals }) {
           <input
             type="text"
             className="form-control"
-            name="Text"
-            placeholder="Goal Text"
-            onChange={e => saveText(e.target.value)}
+            name="description"
+            placeholder="Goal description"
+            onChange={e => saveDescription(e.target.value)}
           />
         </div>
 

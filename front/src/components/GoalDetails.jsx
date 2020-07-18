@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
+import StepsList from './StepsList';
 
 function GoalDetails({ goal, saveReloadGoals }) {
   console.log(goal)
@@ -49,12 +50,13 @@ function GoalDetails({ goal, saveReloadGoals }) {
 
     <li data-categoria={goal.categoria} className="list-group-item d-flex justify-content-between align-items-center">
       <p>
-        Name: {goal.name}
+        Title: {goal.title}
         {""}
       </p>
       <p>Color: {goal.color}</p>
-      <p>Text: {goal.goalText}</p>
-      <p>Step: {goal.step1}</p>
+      <p>Description: {goal.description}</p>
+      <h4>Steps:</h4>
+      <p><StepsList /></p>
       <p>Id: {goal._id}</p>
       <div>
         <Link to={`/goals/edit/${goal._id}`} className="btn btn-success mr-2">Edit</Link>

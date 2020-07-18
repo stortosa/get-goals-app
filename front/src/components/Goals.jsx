@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import GoalDetails from './GoalDetails';
+import StepDetails from './StepDetails';
 
 function Goals({ goals, saveReloadGoals }) {
   console.log(goals)
@@ -14,4 +15,4 @@ function Goals({ goals, saveReloadGoals }) {
     </Fragment>
   )
 }
-export default Goals;
+export default Goals; 

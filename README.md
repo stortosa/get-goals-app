@@ -10,21 +10,22 @@ Example of a minimum CRUD to be able to implement in any project.
 
 ### Pre-requisitos 📋
 
-Packages npm installed
+Packages npm installed in Back:
 
-```
-Example
-```
+body-parser, bcrypt, cors, dotenv, express, nodemon, jsonwebtoken, mongoose, morgan, validator.
+
+Packages installed in Front:
+
+React, axios.
 
 ### Installed 🔧
 
 _A series of step-by-step examples that tells you what to do to have a development environment running_
 
-_Say what that step will be like_
+Created a folder with two sub-folders. Front and Back. In Back I´ve installed many npm packages: 
+1) npm init;
+2) install express, nodemon, morngan, mongoose, cors (explaid)
 
-```
-Example
-```
 
 _And repeat_
 
@@ -64,7 +65,7 @@ _Mention the tools you use to create the project_
 
 * React
 * Firebase
-* Adding more
+* Json-Server(emulate a BBDD)
 
 ## Authors ✒️
 
@@ -72,7 +73,6 @@ _Mencionar a todos aquellos que ayudaron en el proyecto desde sus inicios_
 
 * **Carlos** - *resolve conflicts* - [Carlos](https://github.com/carlostrujillosamper/)
 * **Javier** - *help with backend* - [Javier](https://github.com/javinovich)
-* **Nombre** - *Documentación* - [nombre](https://github.com/nombre)
 
 ## Expressions of Gratitude 🎁
 

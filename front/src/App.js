@@ -8,6 +8,7 @@ import Goals from './components/Goals';
 import GoalDetails from './components/GoalDetails';
 import EditGoal from './components/EditGoal';
 import AddGoal from './components/AddGoal';
+import StepsList from './components/StepsList';
 import axios from 'axios';
 
 function App() {
@@ -39,6 +40,8 @@ function App() {
         <Route exact path="/home" render={() => <Home />} />
         <Route exact path="/goals" render={() =>
           <Goals goals={goals} saveReloadGoals={saveReloadGoals} />} />
+        <Route exact path="/goals/steps" render={() =>
+          <StepsList goals={goals} saveReloadGoals={saveReloadGoals} />} />
         <Route exact path="/new-goal" render={() => <AddGoal saveReloadGoals={saveReloadGoals} />} />
         <Route exact path="/goals/:_id" render={() => <GoalDetails />} />
         <Route exact path="/goals/edit/:_id" render={(props) => {
