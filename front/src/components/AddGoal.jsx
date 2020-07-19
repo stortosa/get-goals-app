@@ -27,7 +27,7 @@ function AddGoal({ history, saveReloadGoals }) {
     try {
       const result = await axios.post('http://localhost:4000/goals', {
 
-        name: titleGoal,
+        title: titleGoal,
         color: colorGoal,
         goalText: descriptionGoal,
         step1: stepGoal,
@@ -62,7 +62,7 @@ function AddGoal({ history, saveReloadGoals }) {
 
       <form className="mt-5" onSubmit={addGoal}>
         <div className="form-group">
-          <label>Goal Name</label>
+          <label>Goal Title</label>
           <input
             type="text"
             className="form-control"

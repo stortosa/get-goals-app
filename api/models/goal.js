@@ -5,6 +5,7 @@ const goalSchema = mongoose.Schema({
   title: { type: String, required: true },   //name
   color: { type: String, required: true },
   description: { type: String, required: true }, // goalText
+}, {
   timestamps: {
     createdAt: 'created_at',
     updatedAt: 'updated_at'

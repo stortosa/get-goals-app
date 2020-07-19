@@ -9,6 +9,7 @@ import GoalDetails from './components/GoalDetails';
 import EditGoal from './components/EditGoal';
 import AddGoal from './components/AddGoal';
 import StepsList from './components/StepsList';
+import StepDetails from './components/StepDetails';
 import axios from 'axios';
 
 function App() {
@@ -16,8 +17,8 @@ function App() {
 
   const [goals, saveGoals] = useState([]);
   const [reloadGoals, saveReloadGoals] = useState(true);
-
-  const dataId = [];
+  const [steps, saveSteps] = useState([]);
+  const [reloadSteps, saveReloadSteps] = useState(true);
 
   useEffect(() => {
     if (reloadGoals) {
@@ -31,7 +32,29 @@ function App() {
       //change a false reload of goal: 
       saveReloadGoals(false);
     }
-  }, [reloadGoals]);
+    if (reloadSteps) {
+      const requestApiStep = async () => {
+        const resultStep = await axios.get('http://localhost:4000/steps')
+        // console.log(resultStep.data.steps);
+        saveSteps(resultStep.data.steps)
+      }
+      requestApiStep();
+      saveReloadSteps(false);
+    }
+
+  }, [reloadGoals, reloadSteps]);
+
+  // useEffect(() => {
+  //   if (reloadSteps) {
+  //     const requestApiStep = async () => {
+  //       const resultStep = await axios.get('http://localhost:4000/steps')
+  //       // console.log(resultStep.data.steps);
+  //       saveSteps(resultStep.data.steps)
+  //     }
+  //     requestApiStep();
+  //     saveReloadSteps(false);
+  //   }
+  // }, [reloadSteps]);
 
   return (
     <Router>
@@ -39,9 +62,10 @@ function App() {
       <Switch>
         <Route exact path="/home" render={() => <Home />} />
         <Route exact path="/goals" render={() =>
-          <Goals goals={goals} saveReloadGoals={saveReloadGoals} />} />
-        <Route exact path="/goals/steps" render={() =>
-          <StepsList goals={goals} saveReloadGoals={saveReloadGoals} />} />
+          <Goals goals={goals} saveReloadGoals={saveReloadGoals} steps={steps} saveReloadSteps={saveReloadSteps} />} />
+        <Route exact path="/steps" render={() =>
+          <StepsList steps={steps} saveReloadSteps={saveReloadSteps} />} />
+        <Route exact path="/steps/:_id" render={() => <StepDetails />} />
         <Route exact path="/new-goal" render={() => <AddGoal saveReloadGoals={saveReloadGoals} />} />
         <Route exact path="/goals/:_id" render={() => <GoalDetails />} />
         <Route exact path="/goals/edit/:_id" render={(props) => {

@@ -7,6 +7,7 @@ const cors = require('cors');
 require('./db');
 
 const goalRoutes = require('../api/routes/goals.js');
+const stepRoutes = require('../api/routes/step.js');
 const userRoutes = require('../api/routes/users');
 
 const whiteList = ['http://localhost:3000','http://localhost']
@@ -42,6 +43,7 @@ app.use((req, res, next) => {
 // Routes which should handle requests
 app.use('/goals', goalRoutes);
 app.use('/user', userRoutes);
+app.use('/steps', stepRoutes);
 
 app.use((req, res, next) => {
   const error = new Error('Not found');

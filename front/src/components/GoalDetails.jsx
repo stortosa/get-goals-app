@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-import StepsList from './StepsList';
+import StepDetails from './StepDetails';
 
-function GoalDetails({ goal, saveReloadGoals }) {
+function GoalDetails({ goal, saveReloadGoals, steps, saveReloadSteps }) {
   console.log(goal)
-
+  console.log(steps)
   const deleteGoal = (_id) => {
     console.log("Eliminando...", _id);
 
@@ -55,8 +55,13 @@ function GoalDetails({ goal, saveReloadGoals }) {
       </p>
       <p>Color: {goal.color}</p>
       <p>Description: {goal.description}</p>
-      <h4>Steps:</h4>
-      <p><StepsList /></p>
+      <p>
+        <ul className="list-group mt-5">
+          {steps.map((ste) => (
+            <StepDetails key={ste.name} ste={ste} saveReloadSteps={saveReloadSteps} />
+          ))}
+        </ul>
+      </p>
       <p>Id: {goal._id}</p>
       <div>
         <Link to={`/goals/edit/${goal._id}`} className="btn btn-success mr-2">Edit</Link>

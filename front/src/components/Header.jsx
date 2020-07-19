@@ -18,7 +18,11 @@ const Header = () => (
             Add Goal
           </NavLink>
         </li>
-
+        <li className="nav-item">
+          <NavLink to="/steps" className="nav-link" activeClassName="active">
+            Steps
+          </NavLink>
+        </li>
       </ul>
     </div>
   </nav>

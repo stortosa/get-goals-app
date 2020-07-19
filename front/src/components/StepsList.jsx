@@ -1,16 +1,17 @@
 import React, { Fragment } from 'react';
 import StepDetails from './StepDetails';
 
-function StepsList({ goals, saveReloadGoals }) {
-  console.log(goals);
+function StepsList({ steps, saveReloadStep }) {
+  console.log(steps);
   return (
     <Fragment>
-      <h1 className="text-center">Steps:</h1>
       <ul className="list-group mt-5">
-        {goals.map(goal => (
-          <StepDetails key={goal._id} goal={goal} saveReloadGoals={saveReloadGoals} />
+        {/* <StepDetails /> */}
+        {steps.map((ste) => (
+          <StepDetails key={ste.name} ste={ste} saveReloadStep={saveReloadStep} />
         ))}
       </ul>
-    </Fragment>  )
+    </Fragment>
+  )
 }
 export default StepsList;
